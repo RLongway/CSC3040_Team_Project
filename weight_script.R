@@ -41,3 +41,9 @@ jfkFullWeighted[jfkFullWeighted != "5" & jfkFullWeighted != "10" & jfkFullWeight
 jfkFullWeighted[, 1:17] <- sapply(jfkFullWeighted[, 1:17], as.numeric)
 jfkFullWeighted$Weight <- rowSums(jfkFullWeighted)
 barplot(table(jfkFullWeighted$Weight), xlab = "Weight", ylab = "Num Files")
+jfkWeighNoWithheld <- jfkFullWeighted
+jfkWeighNoWithheld$Formerly.Withheld <- NULL
+jfkWeighNoWithheld$Weight <- "0"
+jfkWeighNoWithheld[, 1:17] <- sapply(jfkWeighNoWithheld[, 1:17], as.numeric)
+jfkWeighNoWithheld$Weight <- rowSums(jfkWeighNoWithheld)
+barplot(table(jfkWeighNoWithheld$Weight), xlab = "Weight", ylab = "Num Files")
